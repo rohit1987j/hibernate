@@ -3,6 +3,7 @@ package com.example.hibernate.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Student {
@@ -12,6 +13,17 @@ public class Student {
     private int id;
 
     private String name;
+
+    @OneToOne
+    private Passport passport;
+
+    public Passport getPassport() {
+        return passport;
+    }
+
+    public void setPassport(Passport passport) {
+        this.passport = passport;
+    }
 
     public int getId() {
         return id;
