@@ -1,8 +1,8 @@
 package com.example.hibernate.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Course {
@@ -12,6 +12,9 @@ public class Course {
     private int id;
 
     private String name;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
+    private List<Review> reviews = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -27,5 +30,13 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void addReview(Review review) {
+        this.reviews.add(review);
     }
 }
