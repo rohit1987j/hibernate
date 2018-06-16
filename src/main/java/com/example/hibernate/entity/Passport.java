@@ -1,8 +1,6 @@
 package com.example.hibernate.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Passport {
@@ -10,7 +8,18 @@ public class Passport {
     @GeneratedValue
     private int id;
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "passport")
+    private Student student;
+
     private String no;
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
     public int getId() {
         return id;
