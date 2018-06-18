@@ -1,5 +1,6 @@
 package com.example.hibernate.controller;
 
+import com.example.hibernate.entity.Course;
 import com.example.hibernate.entity.Review;
 import com.example.hibernate.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class ReviewController {
         Review review = new Review();
         review.setDescription("very good course");
         review.setRating(1);
+        Course course = new Course();
+        course.setName("sql");
+        review.setCourse(course);
         reviewService.addReview(review);
     }
 }

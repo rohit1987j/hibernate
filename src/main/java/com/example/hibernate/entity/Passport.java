@@ -3,9 +3,10 @@ package com.example.hibernate.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"no"}))
 public class Passport {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "passport")
