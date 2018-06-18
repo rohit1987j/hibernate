@@ -2,11 +2,7 @@ package com.example.hibernate.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.FetchType;
+import javax.persistence.*;
 
 @Entity
 public class Student {
@@ -18,7 +14,7 @@ public class Student {
     private String name;
 
     @JsonIgnore
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
     private Passport passport;
 
     public Passport getPassport() {

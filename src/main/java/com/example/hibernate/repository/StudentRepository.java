@@ -16,7 +16,6 @@ public class StudentRepository {
     private EntityManager entityManager;
 
     public void insert(Student student) {
-        entityManager.persist(student.getPassport());
         entityManager.persist(student);
     }
 
