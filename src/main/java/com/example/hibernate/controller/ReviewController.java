@@ -15,6 +15,8 @@ public class ReviewController {
     @RequestMapping(path = "/review", method = RequestMethod.POST)
     private void addReview() {
         Review review = new Review();
+        review.setDescription("very good course");
+        review.setRating(1);
         reviewService.addReview(review);
     }
 }
