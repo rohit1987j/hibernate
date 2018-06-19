@@ -18,4 +18,8 @@ public class CourseService {
     public Course findCourse(int id) {
         return courseRepository.findById(id);
     }
+
+    public void deleteCourse(int id) {
+        courseRepository.delete(id);
+    }
 }

@@ -20,4 +20,7 @@ public class CourseRepository {
     public Course findById(int id) {
         return entityManager.find(Course.class, id);
     }
+
+    public void delete(int id) {
+    }
 }
