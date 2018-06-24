@@ -12,14 +12,14 @@ public class StudentService {
     private StudentRepository studentRepository;
 
     public void insert(Student student){
-        studentRepository.insert(student);
+        studentRepository.save(student);
     }
 
     public void update(Student student) {
-        studentRepository.update(student);
+        studentRepository.save(student);
     }
 
     public Student findById(int id) {
-        return studentRepository.findById(id);
+        return studentRepository.findById(id).orElseThrow(() ->new RuntimeException(""));
     }
 }
