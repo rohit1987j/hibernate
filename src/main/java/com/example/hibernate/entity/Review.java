@@ -15,6 +15,17 @@ public class Review {
 
     private String description;
 
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    private Student student;
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     public Course getCourse() {
         return course;
     }

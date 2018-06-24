@@ -12,6 +12,6 @@ public class ReviewService {
     private ReviewRepository reviewRepository;
 
     public void addReview(Review review) {
-        reviewRepository.addReview(review);
+        reviewRepository.save(review);
     }
 }
