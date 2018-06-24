@@ -1,6 +1,7 @@
 package com.example.hibernate.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +12,14 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
+    @NotNull
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
     private List<Review> reviews = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    private Teacher teacher;
 
     public int getId() {
         return id;
@@ -38,5 +43,13 @@ public class Course {
 
     public void addReview(Review review) {
         this.reviews.add(review);
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 }

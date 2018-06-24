@@ -12,14 +12,14 @@ public class CourseService {
     private CourseRepository courseRepository;
 
     public void addCourse(Course course) {
-        courseRepository.addCourse(course);
+        courseRepository.save(course);
     }
 
     public Course findCourse(int id) {
-        return courseRepository.findById(id);
+        return courseRepository.findById(id).get();
     }
 
     public void deleteCourse(int id) {
-        courseRepository.delete(id);
+        courseRepository.deleteById(id);
     }
 }
