@@ -11,5 +11,5 @@ import javax.persistence.Id;
 
 @Repository
 @Transactional
-public interface PassportRepository extends JpaRepository<Passport, Id> {
+public interface PassportRepository extends JpaRepository<Passport, Integer> {
 }
