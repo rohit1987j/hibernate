@@ -1,6 +1,7 @@
 package com.example.hibernate.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -8,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "student")
 public class Student {
 
     @Id
@@ -22,6 +25,7 @@ public class Student {
     private Passport passport;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private List<Review> reviews = new ArrayList<>();
 
     public List<Review> getReviews() {
