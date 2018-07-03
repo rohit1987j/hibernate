@@ -1,8 +1,13 @@
 package com.example.hibernate.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class ReviewDto {
+	@NotNull
 	private int rating;
+	@NotNull
 	private int courseId;
+	@NotNull
 	private int studentId;
 	private String description;
 
