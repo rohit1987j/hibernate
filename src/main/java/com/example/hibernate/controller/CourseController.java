@@ -1,9 +1,11 @@
 package com.example.hibernate.controller;
 
+import com.example.hibernate.dto.CourseDto;
 import com.example.hibernate.entity.Course;
 import com.example.hibernate.services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,9 +17,9 @@ public class CourseController {
     private CourseService courseService;
 
     @RequestMapping(path = "/course", method = RequestMethod.POST)
-    public void addCourse(){
+    public void addCourse(@RequestBody CourseDto courseDto){
         Course course = new Course();
-        course.setName("java");
+        course.setName(courseDto.getName());
         courseService.addCourse(course);
     }
 

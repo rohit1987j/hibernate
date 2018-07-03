@@ -1,5 +1,6 @@
 package com.example.hibernate.controller;
 
+import com.example.hibernate.dto.StudentDto;
 import com.example.hibernate.entity.Passport;
 import com.example.hibernate.entity.Student;
 import com.example.hibernate.services.PassportService;
@@ -17,11 +18,11 @@ public class StudentController {
     private PassportService passportService;
 
     @PostMapping("/student")
-    public void insert() {
+    public void insert(@RequestBody StudentDto studentDto) {
         Student student = new Student();
         Passport passport = new Passport();
-        passport.setNo("123");
-        student.setName("udita");
+        passport.setNo(studentDto.getPassportNo());
+        student.setName(studentDto.getName());
         student.setPassport(passport);
         studentService.insert(student);
     }
