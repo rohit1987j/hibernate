@@ -18,7 +18,7 @@ public class CourseController {
     private CourseService courseService;
 
     @RequestMapping(path = "/course", method = RequestMethod.POST)
-    public void addCourse(@Valid @RequestBody CourseDto courseDto){
+    public void addCourse(@Valid @RequestBody CourseDto courseDto) {
         Course course = new Course();
         course.setName(courseDto.getName());
         courseService.save(course);
@@ -26,6 +26,8 @@ public class CourseController {
 
     @RequestMapping(path = "/course/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable int id) {
-        //courseService.de
+        Course course = courseService.findById(id);
+        course.addReview(null);
+        courseService.save(course);
     }
 }

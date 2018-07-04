@@ -31,8 +31,12 @@ public class StudentController {
     @RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
     public Student findById(@PathVariable("id") int id) {
         Student student = studentService.findById(id);
-        //student.getPassport();
         return student;
+    }
+
+    @DeleteMapping(value = "/student/{id}")
+    public void delete(@PathVariable("id") int id) {
+        studentService.deleteById(id);
     }
 
     @RequestMapping(value = "/passport/{id}", method = RequestMethod.GET)

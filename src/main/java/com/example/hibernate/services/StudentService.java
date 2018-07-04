@@ -22,4 +22,8 @@ public class StudentService {
     public Student findById(int id) {
         return studentRepository.findById(id).orElseThrow(() ->new RuntimeException(""));
     }
+
+    public void deleteById(int id) {
+        studentRepository.deleteById(id);
+    }
 }
