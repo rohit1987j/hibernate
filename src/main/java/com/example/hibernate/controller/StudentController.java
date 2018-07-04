@@ -7,6 +7,7 @@ import com.example.hibernate.services.PassportService;
 import com.example.hibernate.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 
 @RestController
 public class StudentController {
@@ -18,7 +19,7 @@ public class StudentController {
     private PassportService passportService;
 
     @PostMapping("/student")
-    public void insert(@RequestBody StudentDto studentDto) {
+    public void save(@Valid @RequestBody StudentDto studentDto) {
         Student student = new Student();
         Passport passport = new Passport();
         passport.setNo(studentDto.getPassportNo());
@@ -28,7 +29,7 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
-    public Student getStudent(@PathVariable("id") int id) {
+    public Student findById(@PathVariable("id") int id) {
         Student student = studentService.findById(id);
         //student.getPassport();
         return student;

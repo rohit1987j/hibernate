@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import javax.validation.Valid;
 
 @RestController
 public class ReviewController {
@@ -25,7 +26,7 @@ public class ReviewController {
     private StudentService studentService;
 
     @RequestMapping(path = "/review", method = RequestMethod.POST)
-    private void addReview(@RequestBody ReviewDto reviewDto) {
+    private void save(@Valid @RequestBody ReviewDto reviewDto) {
         Review review = new Review();
         review.setDescription(reviewDto.getDescription());
         review.setRating(reviewDto.getRating());
