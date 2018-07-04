@@ -29,10 +29,10 @@ public class ReviewController {
         Review review = new Review();
         review.setDescription(reviewDto.getDescription());
         review.setRating(reviewDto.getRating());
-        Course course = courseService.findCourse(reviewDto.getCourseId());
+        Course course = courseService.findById(reviewDto.getCourseId());
         Student student = studentService.findById(reviewDto.getStudentId());
         review.setCourse(course);
         review.setStudent(student);
-        reviewService.addReview(review);
+        reviewService.save(review);
     }
 }

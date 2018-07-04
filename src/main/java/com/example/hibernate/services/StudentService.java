@@ -11,7 +11,7 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
-    public void insert(Student student){
+    public void save(Student student){
         studentRepository.save(student);
     }
 

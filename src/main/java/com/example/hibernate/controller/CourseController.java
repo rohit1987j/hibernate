@@ -20,7 +20,7 @@ public class CourseController {
     public void addCourse(@RequestBody CourseDto courseDto){
         Course course = new Course();
         course.setName(courseDto.getName());
-        courseService.addCourse(course);
+        courseService.save(course);
     }
 
     @RequestMapping(path = "/course/{id}", method = RequestMethod.DELETE)

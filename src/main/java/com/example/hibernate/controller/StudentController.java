@@ -24,24 +24,20 @@ public class StudentController {
         passport.setNo(studentDto.getPassportNo());
         student.setName(studentDto.getName());
         student.setPassport(passport);
-        studentService.insert(student);
+        studentService.save(student);
     }
 
     @RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
     public Student getStudent(@PathVariable("id") int id) {
         Student student = studentService.findById(id);
-        System.out.println("1111");
         //student.getPassport();
-        System.out.println("2222");
         return student;
     }
 
     @RequestMapping(value = "/passport/{id}", method = RequestMethod.GET)
     public Passport getPassport(@PathVariable("id") int id) {
         Passport passport = passportService.getPassport(id);
-        System.out.println("1111");
         //passport.getStudent();
-        System.out.println("2222");
         return passport;
     }
 }
