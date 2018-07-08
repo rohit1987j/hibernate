@@ -8,7 +8,11 @@ import com.example.hibernate.services.CourseService;
 import com.example.hibernate.services.ReviewService;
 import com.example.hibernate.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import javax.validation.Valid;
 
 @RestController
 public class ReviewController {
@@ -22,20 +26,14 @@ public class ReviewController {
     private StudentService studentService;
 
     @RequestMapping(path = "/review", method = RequestMethod.POST)
-    private void addReview(@RequestBody ReviewDto reviewDto) {
+    private void save(@Valid @RequestBody ReviewDto reviewDto) {
         Review review = new Review();
         review.setDescription(reviewDto.getDescription());
         review.setRating(reviewDto.getRating());
-        Course course = courseService.findCourse(reviewDto.getCourseId());
+        Course course = courseService.findById(reviewDto.getCourseId());
         Student student = studentService.findById(reviewDto.getStudentId());
         review.setCourse(course);
         review.setStudent(student);
-        reviewService.addReview(review);
-    }
-
-    @GetMapping(path = "/review/{id}")
-    public Review getReview(@PathVariable("id") int id) {
-        Review review = reviewService.findById(id);
-        return review;
+        reviewService.save(review);
     }
 }

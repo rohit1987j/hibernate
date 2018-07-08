@@ -11,11 +11,11 @@ public class CourseService {
     @Autowired
     private CourseRepository courseRepository;
 
-    public void addCourse(Course course) {
+    public void save(Course course) {
         courseRepository.save(course);
     }
 
-    public Course findCourse(int id) {
+    public Course findById(int id) {
         return courseRepository.findById(id).get();
     }
 

@@ -11,7 +11,7 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
-    public void insert(Student student){
+    public void save(Student student){
         studentRepository.save(student);
     }
 
@@ -21,5 +21,9 @@ public class StudentService {
 
     public Student findById(int id) {
         return studentRepository.findById(id).orElseThrow(() ->new RuntimeException(""));
+    }
+
+    public void deleteById(int id) {
+        studentRepository.deleteById(id);
     }
 }
