@@ -14,4 +14,8 @@ public class ReviewService {
     public void addReview(Review review) {
         reviewRepository.save(review);
     }
+
+    public Review findById(int id) {
+        return reviewRepository.findById(id).orElseThrow(() -> new RuntimeException(""));
+    }
 }

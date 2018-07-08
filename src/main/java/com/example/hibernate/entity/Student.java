@@ -20,6 +20,16 @@ public class Student {
     @NotNull
     private String name;
 
+    private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
     private Passport passport;

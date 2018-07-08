@@ -10,7 +10,7 @@ public class Review {
 
     private int rating;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Course course;
 
     private String description;
